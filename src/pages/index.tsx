@@ -1,9 +1,54 @@
 import Head from 'next/head';
 import Header from '@/components/Header';
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import { Hero } from '@/components/page_components/index';
+import Link from 'next/link';
+import ProjectList from '@/components/ProjectList';
+import { BlogFrontmatter, PortfolioFrontmatter } from '@/types/frontmatter';
+import { compareDesc, parse } from 'date-fns';
+import fs from 'fs';
+import getPropsFromFile from '@/helpers/functions/getPropsFromFile';
+import { BLOG_DATA_PATH, PORTFOLIO_DATA_PATH } from '@/config/paths';
 
-export const HomePage: NextPage = () => (
+const parseFrontmatterDate = (date: string) =>
+	parse(date, 'MM/dd/y', new Date());
+
+export const getStaticProps: GetStaticProps = async () => {
+	const projectFilenames: string[] = fs.readdirSync(PORTFOLIO_DATA_PATH);
+	const blogFilenames: string[] = fs.readdirSync(BLOG_DATA_PATH);
+
+	const projectFrontmatter = await Promise.all(
+		projectFilenames.map((filename) =>
+			getPropsFromFile<PortfolioFrontmatter>(PORTFOLIO_DATA_PATH, filename)
+		)
+	);
+	const blogFrontmatter = await Promise.all(
+		blogFilenames.map((filename) =>
+			getPropsFromFile<BlogFrontmatter>(BLOG_DATA_PATH, filename)
+		)
+	);
+
+	projectFrontmatter.sort((a, b) => b.id - a.id);
+	blogFrontmatter.sort((a, b) => {
+		const aDate = parseFrontmatterDate(a.date);
+		const bDate = parseFrontmatterDate(b.date);
+		return compareDesc(aDate, bDate);
+	});
+
+	return {
+		props: {
+			projects: projectFrontmatter.slice(0, 3),
+			posts: blogFrontmatter.slice(0, 6),
+		},
+	};
+};
+
+type Props = {
+	projects: PortfolioFrontmatter[];
+	posts: BlogFrontmatter[];
+};
+
+export const HomePage: NextPage<Props> = ({ projects }) => (
 	<>
 		<Head>
 			<title>
@@ -22,6 +67,16 @@ export const HomePage: NextPage = () => (
 			<Header />
 			<main>
 				<Hero />
+
+				<section className="section">
+					<h2>Recent Projects</h2>
+					<ProjectList items={projects} />
+					<div style={{ textAlign: 'center' }}>
+						<Link href="portfolio" className="btn">
+							View All Projects
+						</Link>
+					</div>
+				</section>
 			</main>
 		</div>
 	</>

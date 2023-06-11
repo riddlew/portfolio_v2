@@ -1,4 +1,4 @@
-export const PortfolioCategories = [
+export const portfolioCategories = [
 	'All',
 	'React',
 	'Node / Express',

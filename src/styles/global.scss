@@ -1,4 +1,5 @@
 @use 'colors.scss' as *;
+@use 'breakpoints.scss' as *;
 /*
 1px  = 0.0625
 2px  = 0.125
@@ -36,6 +37,11 @@ html, body, #__next {
 h1, h2, h3, h4, h5, h6 {
 	font-family: theme('fontFamily.serif');
 	font-weight: 600;
+	text-align: center;
+
+	@include bp(md) {
+		text-align: left;
+	}
 }
 
 h1 {
@@ -107,4 +113,31 @@ main a {
 .section {
 	padding-top: 4.8rem;
 	padding-bottom: 4.8rem;
+}
+
+.btn {
+	border-radius: 0.6rem;
+	background-color: color(dark-blue);
+	color: #ffffff;
+	text-decoration: none;
+	transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	padding: 1rem 3.2rem;
+	display: block;
+
+	&:hover {
+		color: #ffffff;
+		background-color: color(mid-blue);
+	}
+
+	&.btn--alt {
+		background-color: color(button-gray);
+
+		&:hover {
+			background-color: color(button-gray-hover);
+		}
+	}
+
+	@include bp(md) {
+		display: inline-block;
+	}
 }
