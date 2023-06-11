@@ -7,14 +7,17 @@ type Props = {
 	items: BlogFrontmatter[];
 };
 
-const BlogList = ({ items }: Props) => (
-	<div className={style.grid}>
-		<AnimatePresence>
-			{items.map((item, i) => (
-				<BlogCard key={item.slug} index={i} item={item} />
-			))}
-		</AnimatePresence>
-	</div>
-);
+const BlogList = ({ items }: Props) =>
+	items.length === 0 ? (
+		<p className="empty-message">No blog posts yet!</p>
+	) : (
+		<div className={style.grid}>
+			<AnimatePresence>
+				{items.map((item, i) => (
+					<BlogCard key={item.slug} index={i} item={item} />
+				))}
+			</AnimatePresence>
+		</div>
+	);
 
 export default BlogList;

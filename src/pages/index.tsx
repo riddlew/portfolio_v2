@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 	return {
 		props: {
-			projects: projectFrontmatter.slice(0, 3),
+			projects: projectFrontmatter.slice(0, 4),
 			posts: blogFrontmatter.slice(0, 6),
 		},
 	};
