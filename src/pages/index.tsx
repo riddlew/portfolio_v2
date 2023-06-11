@@ -9,6 +9,7 @@ import { compareDesc, parse } from 'date-fns';
 import fs from 'fs';
 import getPropsFromFile from '@/helpers/functions/getPropsFromFile';
 import { BLOG_DATA_PATH, PORTFOLIO_DATA_PATH } from '@/config/paths';
+import BlogList from '@/components/BlogList';
 
 const parseFrontmatterDate = (date: string) =>
 	parse(date, 'MM/dd/y', new Date());
@@ -48,7 +49,7 @@ type Props = {
 	posts: BlogFrontmatter[];
 };
 
-export const HomePage: NextPage<Props> = ({ projects }) => (
+export const HomePage: NextPage<Props> = ({ projects, posts }) => (
 	<>
 		<Head>
 			<title>
@@ -73,6 +74,16 @@ export const HomePage: NextPage<Props> = ({ projects }) => (
 					<ProjectList items={projects} />
 					<div style={{ textAlign: 'center' }}>
 						<Link href="portfolio" className="btn">
+							View All Projects
+						</Link>
+					</div>
+				</section>
+
+				<section className="section">
+					<h2>Recent Blog Posts</h2>
+					<BlogList items={posts} />
+					<div style={{ textAlign: 'center' }}>
+						<Link href="blog" className="btn">
 							View All Projects
 						</Link>
 					</div>

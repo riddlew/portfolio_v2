@@ -2,7 +2,7 @@ import { PortfolioFrontmatter } from '@/types/frontmatter';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import style from './ProjectList.module.scss';
+import style from './ProjectCard.module.scss';
 
 const variant = {
 	hidden: (i: number) => ({ opacity: 0, transition: { delay: i * 0.1 } }),
