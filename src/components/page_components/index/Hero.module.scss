@@ -7,17 +7,17 @@
 	align-items: flex-start;
 	justify-content: space-between;
 	gap: 4.8rem;
+	flex-direction: column;
 
-	@include bp(lg) {
+	@include bp(md) {
 		text-align: left;
+		flex-direction: row;
 	}
-
-	//@apply dark-hero mt-12 p-6 md:p-12 xl:p-24 lg:mb-12 relative rounded-4xl text-white;
 }
 
 .hero_img {
 	border-radius: 0.6rem;
-	// @apply rounded-4xl mx-auto lg:mx-0 mb-12 lg:mb-0 lg:float-left lg:mr-24;
+	margin: 0 auto;
 }
 
 .hero_info {
@@ -25,7 +25,6 @@
 	flex-direction: column;
 	flex-grow: 1;
 	gap: 0.8rem;
-	// @apply lg:ml-24
 }
 
 .hero_hello {
@@ -35,8 +34,6 @@
 .hero_name {
 	font-size: 4.8rem;
 	font-weight: 600;
-
-	// @apply text-6xl font-bold leading-0
 }
 
 .hero_btns {
@@ -47,9 +44,10 @@
 		background-color: color(dark-blue);
 		color: #ffffff;
 		text-decoration: none;
-		transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+		transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 		padding: 1rem 3.2rem;
 		display: block;
+		margin-bottom: 1rem;
 
 		&.btn__alt {
 			background-color: color(button-gray);
@@ -59,9 +57,10 @@
 			}
 		}
 
-		@include bp(lg) {
+		@include bp(md) {
 			display: inline-block;
 			margin-right: 1rem;
+			margin-bottom: 0;
 		}
 
 		&:hover {
