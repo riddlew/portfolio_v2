@@ -18,10 +18,12 @@ export const HomePage: NextPage = () => (
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 
-		<Header />
-		<main>
-			<Hero />
-		</main>
+		<div className="container">
+			<Header />
+			<main>
+				<Hero />
+			</main>
+		</div>
 	</>
 );
 

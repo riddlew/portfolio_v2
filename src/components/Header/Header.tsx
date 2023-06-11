@@ -7,7 +7,6 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { useState } from 'react';
-import clsx from 'clsx';
 import style from './Header.module.scss';
 
 export const Header = () => {
@@ -15,7 +14,7 @@ export const Header = () => {
 
 	return (
 		<>
-			<header className={clsx('container', style.header)}>
+			<header className={style.header}>
 				<Link href="/" className={style.logo}>
 					riddl.dev
 				</Link>
