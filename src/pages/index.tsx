@@ -88,6 +88,17 @@ export const HomePage: NextPage<Props> = ({ projects, posts }) => (
 						</Link>
 					</div>
 				</section>
+
+				<section className="section">
+					<h2>Like what you see? Let&apos;s work together!</h2>
+					<p>
+						I am currently open to new opportunities. If you would like to hire
+						me or need a website built for your company, feel free to{' '}
+						<Link href="contact" title="Contact Wyatt ">
+							contact me
+						</Link>
+					</p>
+				</section>
 			</main>
 		</div>
 	</>
