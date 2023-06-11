@@ -1,0 +1,50 @@
+{
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended",
+		"airbnb",
+		"airbnb-typescript/base",
+		"next/core-web-vitals",
+		"prettier"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": "latest",
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"plugins": ["@typescript-eslint", "react", "prettier"],
+	"parser": "@typescript-eslint/parser",
+	"rules": {
+		"prettier/prettier": ["error"],
+		"no-console": 0,
+		"no-unused-vars": "off",
+		"@typescript-eslint/no-unused-vars": ["error"],
+		"no-underscore-dangle": 0,
+		"react/prop-types": "off",
+		"react/react-in-jsx-scope": "off",
+		"import/prefer-default-export": "off",
+		"react/jsx-filename-extension": [
+			1,
+			{
+				"extensions": [".tsx"]
+			}
+		],
+		"react/jsx-props-no-spreading": "off",
+		"react/function-component-definition": "off",
+		"no-plusplus": "off"
+	}
+}

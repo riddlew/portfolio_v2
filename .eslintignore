@@ -1,0 +1,7 @@
+**/node_modules/*
+**/dist/*
+**/.next/*
+**/.husky/*
+next.config.js
+postcss.config.js
+tailwind.config.js

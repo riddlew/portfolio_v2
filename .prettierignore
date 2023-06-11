@@ -1,0 +1,6 @@
+**/.husky
+**/.next
+**/.vercel
+.lintstagedrc
+pnpm-lock.yaml
+src/styles/*
