@@ -1,0 +1,11 @@
+@use 'colors.scss' as *;
+@use 'breakpoints.scss' as *;
+
+.footer {
+	margin-top: 4.8rem;
+	background-color: color(dark-blue);
+	color: #ffffff;
+	padding: 2.4rem 0;
+	font-size: 1.5rem;
+	text-align: center;
+}
