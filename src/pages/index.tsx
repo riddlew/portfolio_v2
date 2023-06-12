@@ -10,6 +10,7 @@ import fs from 'fs';
 import getPropsFromFile from '@/helpers/functions/getPropsFromFile';
 import { BLOG_DATA_PATH, PORTFOLIO_DATA_PATH } from '@/config/paths';
 import BlogList from '@/components/BlogList';
+import Footer from '@/components/Footer';
 
 const parseFrontmatterDate = (date: string) =>
 	parse(date, 'MM/dd/y', new Date());
@@ -64,43 +65,42 @@ export const HomePage: NextPage<Props> = ({ projects, posts }) => (
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 
-		<div className="container">
-			<Header />
-			<main>
-				<Hero />
+		<Header />
+		<main className="container">
+			<Hero />
 
-				<section className="section">
-					<h2>Recent Projects</h2>
-					<ProjectList items={projects} />
-					<div style={{ textAlign: 'center' }}>
-						<Link href="portfolio" className="btn">
-							View All Projects
-						</Link>
-					</div>
-				</section>
+			<section className="section">
+				<h2>Recent Projects</h2>
+				<ProjectList items={projects} />
+				<div style={{ textAlign: 'center' }}>
+					<Link href="portfolio" className="btn">
+						View All Projects
+					</Link>
+				</div>
+			</section>
 
-				<section className="section">
-					<h2>Recent Blog Posts</h2>
-					<BlogList items={posts} />
-					<div style={{ textAlign: 'center' }}>
-						<Link href="blog" className="btn">
-							View All Projects
-						</Link>
-					</div>
-				</section>
+			<section className="section">
+				<h2>Recent Blog Posts</h2>
+				<BlogList items={posts} />
+				<div style={{ textAlign: 'center' }}>
+					<Link href="blog" className="btn">
+						View All Projects
+					</Link>
+				</div>
+			</section>
 
-				<section className="section">
-					<h2>Like what you see? Let&apos;s work together!</h2>
-					<p>
-						I am currently open to new opportunities. If you would like to hire
-						me or need a website built for your company, feel free to{' '}
-						<Link href="contact" title="Contact Wyatt ">
-							contact me
-						</Link>
-					</p>
-				</section>
-			</main>
-		</div>
+			<section className="section">
+				<h2>Like what you see? Let&apos;s work together!</h2>
+				<p>
+					I am currently open to new opportunities. If you would like to hire me
+					or need a website built for your company, feel free to{' '}
+					<Link href="contact" title="Contact Wyatt ">
+						contact me
+					</Link>
+				</p>
+			</section>
+		</main>
+		<Footer />
 	</>
 );
 
