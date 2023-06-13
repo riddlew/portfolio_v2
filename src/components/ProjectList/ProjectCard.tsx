@@ -27,7 +27,7 @@ const ProjectCard = ({ item, index, titleAs: TitleElement = 'h3' }: Props) => (
 	>
 		<Link href={`portfolio/${item.slug}`}>
 			<Image
-				src={item.images[0]}
+				src={item.images[0].src}
 				alt={item.name}
 				width={600}
 				height={400}

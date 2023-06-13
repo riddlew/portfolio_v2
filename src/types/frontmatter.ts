@@ -3,7 +3,10 @@ export type PortfolioFrontmatter = {
 	name: string;
 	slug: string;
 	description: string;
-	images: [string, string][];
+	images: {
+		src: string;
+		alt: string;
+	}[];
 	tags: string[];
 	url: string;
 };
