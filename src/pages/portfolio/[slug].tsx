@@ -3,6 +3,9 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { GetStaticProps, NextPage } from 'next';
 import path from 'path';
 import Head from 'next/head';
+import Image from 'next/image';
+import { Pagination, Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Components from '@/components/MDXComponents';
 import Nav from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,6 +13,10 @@ import { PORTFOLIO_DATA_PATH } from '@/config';
 import { PortfolioFrontmatter } from '@/types/frontmatter';
 import parseMDXFile from '@/helpers/functions/parseMDXFile';
 import slugify from '@/helpers/functions/slugify';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 type SlugParams = {
 	params: {
@@ -68,12 +75,28 @@ export const PortfolioDetailsPage: NextPage<PortfolioDetailsProps> = ({
 			<section className="section">
 				<div className="container">
 					<h1>{source.frontmatter.name}</h1>
-					<div className="flex gap-2 mb-24">
+					<Swiper
+						slidesPerView={1}
+						loop
+						pagination={{ clickable: true }}
+						navigation
+						modules={[Pagination, Navigation]}
+					>
 						{source.frontmatter.images.map((img) => (
-							<img key={img} src={img} width="90" height="60" />
+							<SwiperSlide key={img.src}>
+								<Image
+									key={img.src}
+									src={img.src}
+									alt={img.alt}
+									width={600}
+									height={800}
+								/>
+							</SwiperSlide>
 						))}
+					</Swiper>
+					<div className="mdx-styling">
+						<MDXRemote {...source} components={Components} />
 					</div>
-					<MDXRemote {...source} components={Components} />
 				</div>
 			</section>
 		</main>
