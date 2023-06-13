@@ -1,7 +1,8 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const useNavLine = () => {
 	const [lineState, setLineState] = useState({ left: 0, width: 0 });
+	const [isMounted, setIsMounted] = useState(false);
 	const lineRef = useRef<HTMLDivElement>(null);
 	const selectedRef = useRef<HTMLLIElement | null>(null);
 
@@ -22,14 +23,20 @@ const useNavLine = () => {
 		}
 	};
 
-	useLayoutEffect(() => {
-		setLineToSelected();
-		window.addEventListener('resize', setLineToSelected);
+	useEffect(() => {
+		if (!isMounted) setIsMounted(true);
+	}, [isMounted]);
+
+	useEffect(() => {
+		if (isMounted) {
+			setLineToSelected();
+			window.addEventListener('resize', setLineToSelected);
+		}
 
 		return () => {
 			window.removeEventListener('resize', setLineToSelected);
 		};
-	}, []);
+	}, [isMounted]);
 
 	return {
 		lineState,
