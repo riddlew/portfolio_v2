@@ -1,0 +1,53 @@
+@use 'sass:string';
+@use 'sass:map';
+
+$config: (
+	breakpoints: (
+		sm: 640px,
+		md: 768px,
+		lg: 1024px,
+		xl: 1280px,
+		2xl: 1536px,
+	),
+	colors: (
+		dark-blue: rgb(30, 58, 138),
+		mid-blue: rgb(37, 99, 235),
+		black-blue: #002d52,
+		button-gray: rgb(102, 102, 102),
+		button-gray-hover: rgb(141, 141, 141),
+	),
+	fonts: (
+		sans: '"Work sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+		serif: '"Crete Round", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
+		monospace: '"Jetbrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+	)
+);
+
+@function color($key) {
+	@return map.get(
+		map.get($config, 'colors'),
+		$key
+	);
+}
+
+@function font($font) {
+	@return string.unquote(
+		map.get(
+			map.get($config, 'fonts'),
+			$font
+		)
+	);
+}
+
+@mixin bp($key) {
+	$size: map.get(
+		map.get($config, 'breakpoints'),
+		$key
+	);
+
+	@if $size {
+		@media screen and (min-width: $size) {
+			@content;
+		}
+	}
+}
