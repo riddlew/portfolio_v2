@@ -3,7 +3,7 @@ import Nav from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { SkillBar } from '@/components/page_components/about';
-import style from './about.module.scss';
+import style from '@/styles/pages/about.module.scss';
 
 export default function AboutPage() {
 	return (

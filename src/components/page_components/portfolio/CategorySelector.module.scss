@@ -1,0 +1,42 @@
+@use 'config.scss' as *;
+
+.container {
+	position: relative;
+	display: none;
+
+	@include bp(md) {
+		display: block;
+	}
+}
+
+.list {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.2rem;
+	margin-bottom: 4.8rem;
+
+	li {
+		padding: 0.8rem 1.6rem;
+	}
+}
+
+.nav_line {
+	background-color: color(dark-blue);
+	bottom: 0;
+	height: 0.3rem;
+	left: 0;
+	position: absolute;
+	width: 8rem;
+}
+
+.mobile_select {
+	display: block;
+	width: 100%;
+	padding: 1.2rem 1.6rem;
+	margin-bottom: 4.8rem;
+
+	@include bp(md) {
+		display: none;
+	}
+}
