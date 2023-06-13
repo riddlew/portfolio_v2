@@ -61,6 +61,7 @@ export const PortfolioPage: NextPage<PortfolioProps> = ({ source }) => {
 							selected={category}
 						/>
 						<ProjectList
+							titleAs="h2"
 							items={source.filter((item) =>
 								category === 'All' ? true : item.tags.includes(category)
 							)}

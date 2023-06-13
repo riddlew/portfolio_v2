@@ -5,17 +5,16 @@ import Image from 'next/image';
 import style from './ProjectCard.module.scss';
 
 const variant = {
-	hidden: (i: number) => ({ opacity: 0, transition: { delay: i * 0.1 } }),
-	show: (i: number) => ({ opacity: 1, transition: { delay: i * 0.1 } }),
+	hidden: { opacity: 0 },
+	show: { opacity: 1 },
 };
 
 type Props = {
 	item: PortfolioFrontmatter;
-	index: number;
 	titleAs?: React.ElementType;
 };
 
-const ProjectCard = ({ item, index, titleAs: TitleElement = 'h3' }: Props) => (
+const ProjectCard = ({ item, titleAs: TitleElement = 'h3' }: Props) => (
 	<motion.div
 		className={style.card}
 		layout
@@ -23,7 +22,6 @@ const ProjectCard = ({ item, index, titleAs: TitleElement = 'h3' }: Props) => (
 		initial="hidden"
 		animate="show"
 		exit="hidden"
-		custom={index}
 	>
 		<Link href={`portfolio/${item.slug}`}>
 			<Image
