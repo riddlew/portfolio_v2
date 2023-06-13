@@ -1,5 +1,6 @@
 import { portfolioCategories } from '@/config';
 import clsx from 'clsx';
+import useNavLine from '@/hooks/useNavLine';
 import style from './CategorySelector.module.scss';
 
 type Props = {
@@ -8,6 +9,14 @@ type Props = {
 };
 
 export const CategorySelector = ({ onCategorySelect, selected }: Props) => {
+	const {
+		lineState,
+		lineRef,
+		selectedRef,
+		setLineToSelected,
+		setLineToHovered,
+	} = useNavLine();
+
 	const onCategoryMobileSelect = (
 		event: React.ChangeEvent<HTMLSelectElement>
 	) => {
@@ -17,10 +26,24 @@ export const CategorySelector = ({ onCategorySelect, selected }: Props) => {
 	return (
 		<>
 			<div className={style.container}>
-				<div className={style.nav_line} />
+				<div
+					className="nav_line"
+					ref={lineRef}
+					style={{
+						left: `${lineState.left}px`,
+						width: `${lineState.width}px`,
+					}}
+				/>
 				<ul className={style.list}>
 					{portfolioCategories.map((category) => (
-						<li key={category}>
+						<li
+							key={category}
+							ref={(ref) => {
+								if (ref && category === selected) selectedRef.current = ref;
+							}}
+							onMouseEnter={setLineToHovered}
+							onMouseLeave={() => setLineToSelected()}
+						>
 							<button
 								type="button"
 								onClick={() => onCategorySelect(category)}

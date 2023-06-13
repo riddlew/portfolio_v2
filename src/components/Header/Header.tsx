@@ -8,10 +8,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { useState } from 'react';
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
+import useNavLine from '@/hooks/useNavLine';
 import style from './Header.module.scss';
 
 export const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
+	// const [lineState, setLineState] = useState({ left: 0, width: 0 });
+	const router = useRouter();
+	const {
+		lineState,
+		lineRef,
+		selectedRef,
+		setLineToSelected,
+		setLineToHovered,
+	} = useNavLine();
 
 	return (
 		<>
@@ -21,21 +32,61 @@ export const Header = () => {
 				</Link>
 
 				<nav className={style.nav}>
-					<div className={style.nav_line} />
+					<div
+						className="nav_line"
+						ref={lineRef}
+						style={{
+							left: `${lineState.left}px`,
+							width: `${lineState.width}px`,
+						}}
+					/>
 					<ul>
-						<li>
+						<li
+							ref={(ref) => {
+								if (ref && router.asPath === '/') selectedRef.current = ref;
+							}}
+							onMouseEnter={setLineToHovered}
+							onMouseLeave={() => setLineToSelected()}
+						>
 							<Link href="/">Home</Link>
 						</li>
-						<li>
+						<li
+							ref={(ref) => {
+								if (ref && router.asPath === '/about')
+									selectedRef.current = ref;
+							}}
+							onMouseEnter={setLineToHovered}
+							onMouseLeave={() => setLineToSelected()}
+						>
 							<Link href="/about">About</Link>
 						</li>
-						<li>
+						<li
+							ref={(ref) => {
+								if (ref && router.asPath === '/portfolio')
+									selectedRef.current = ref;
+							}}
+							onMouseEnter={setLineToHovered}
+							onMouseLeave={() => setLineToSelected()}
+						>
 							<Link href="/portfolio">Portfolio</Link>
 						</li>
-						<li>
+						<li
+							ref={(ref) => {
+								if (ref && router.asPath === '/blog') selectedRef.current = ref;
+							}}
+							onMouseEnter={setLineToHovered}
+							onMouseLeave={() => setLineToSelected()}
+						>
 							<Link href="/blog">Blog</Link>
 						</li>
-						<li>
+						<li
+							ref={(ref) => {
+								if (ref && router.asPath === '/contact')
+									selectedRef.current = ref;
+							}}
+							onMouseEnter={setLineToHovered}
+							onMouseLeave={() => setLineToSelected()}
+						>
 							<Link href="/contact">Contact</Link>
 						</li>
 					</ul>
