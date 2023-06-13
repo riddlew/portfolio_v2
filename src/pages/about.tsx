@@ -46,7 +46,7 @@ export default function AboutPage() {
 							passionate Software Engineer to join your team, please feel free
 							to{' '}
 							<Link
-								href="about"
+								href="contact"
 								title="Contact Wyatt Riddle"
 								className="text-blue-600 hover:underline"
 							>
