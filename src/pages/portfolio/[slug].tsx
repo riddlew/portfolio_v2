@@ -91,6 +91,7 @@ export const PortfolioDetailsPage: NextPage<PortfolioDetailsProps> = ({
 									width={600}
 									height={800}
 								/>
+								<div className="swiper-lazy-preloader" />
 							</SwiperSlide>
 						))}
 					</Swiper>
