@@ -1,25 +1,6 @@
 @use 'config.scss' as *;
 @use 'base.scss';
 
-/*
-1px  = 0.0625
-2px  = 0.125
-3px  = 0.1875
-4px  = 0.25
-5px  = 0.3125
-6px  = 0.375
-7px  = 0.4375
-8px  = 0.5
-9px  = 0.5625
-10px = 0.625
-11px = 0.6875
-12px = 0.75
-13px = 0.8125
-14px = 0.875
-15px = 0.9375
-16px = 1.0
-*/
-
 :root {
 	font-size: 10px;
 }
@@ -29,10 +10,6 @@ html, body {
 	line-height: 1.5;
 	color: #002442;
 	background-color: #f0f9ff;
-}
-
-html, body, #__next {
-	/* @apply text-gray-800 bg-[#f0f9ff]; */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -170,253 +147,211 @@ main p.paragraph {
 	margin-bottom: 4.8rem;
 }
 
+.swiper {
+	max-width: 100%;
+	max-height: 400px;
+	margin: 4.8rem 0;
+}
 
+.swiper-slide {
+	overflow: hidden;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-	.blockquote {
-		@apply text-theme-blue-300 bg-theme-white dark:bg-theme-blue-50 shadow-md rounded py-5 px-5 text-left mb-5 mx-auto w-fit relative overflow-hidden;
+	img {
+		margin: 0 auto;
+		box-shadow: 0 0.2rem 0.6rem 0 rgba(0, 0, 0, 0.2);
+		border-radius: 0.6rem;
 	}
+}
 
-	.blockquote::before,
-	.blockquote::after {
-		display: block;
-		color: #1d65ac60;
-		font-size: 12.8rem;
-		position: absolute;
-		font-weight: 700;
-		opacity: 0.25;
-		@apply font-quotes;
+.swiper-button-prev,
+.swiper-button-next {
+	display: none !important;
+
+	@include bp(md) {
+		display: flex !important;
 	}
+}
 
-	.blockquote::before {
-		content: '“';
-		top: 6.0rem;
-		left: 0.5rem;
-		line-height: 0;
-	}
+.blockquote {
+	background-color: #ffffff;
+	padding: 2.0rem;
+	margin: 4.8rem auto;
+	position: relative;
+	overflow: hidden;
+	width: fit-content;
+	border-radius: 0.6rem;
+	box-shadow: 0 0.2rem 0.6rem 0 rgba(0, 0, 0, 0.2);
+}
 
-	.blockquote::after {
-		content: '”';
-		bottom: -1.0rem;
-		right: 0.5rem;
-		line-height: 0;
-	}
+.blockquote::before,
+.blockquote::after {
+	display: block;
+	color: #1d65ac60;
+	font-size: 12.8rem;
+	position: absolute;
+	font-weight: 700;
+	opacity: 0.25;
+}
 
-	.blockquote cite {
-		margin-left: 2.8rem;
-		@apply block text-right mt-2.5;
-	}
+.blockquote::before {
+	content: '“';
+	top: 6.0rem;
+	left: 0.5rem;
+	line-height: 0;
+}
 
-	.pre {
-		@apply text-theme-black bg-theme-white dark:bg-theme-blue-50 shadow-md rounded p-5 text-left font-code mb-5;
-	}
+.blockquote::after {
+	content: '”';
+	bottom: 1.0rem;
+	right: 1.5rem;
+	line-height: 0;
+}
 
-	.pre code {
-		background: none;
-		box-shadow: none !important;
-		border: none;
-		padding: 0;
-		margin: 0;
-	}
+.blockquote cite {
+	margin-left: 2.8rem;
+	display: block;
+	text-align: right;
+	margin-top: 1.0rem;
+	font-weight: 600;
+	font-style: normal;
+}
 
-	.callout {
-		@apply shadow-md rounded p-5 text-left mb-5 flex flex-row;
-	}
+code {
+	background-color: #ffffff;
+	box-shadow: 0 0.2rem 0.6rem 0 rgba(0, 0, 0, 0.2);
+	border-radius: 0.6rem;
+	overflow: auto;
+	word-wrap: break-word;
+	box-decoration-break: clone;
+}
 
-	.callout.info {
-		@apply text-theme-blue-300 bg-theme-blue-100 dark:bg-theme-blue-100 border-theme-blue-300;
-	}
+.pre {
+	background-color: #ffffff;
+	box-shadow: 0 0.2rem 0.6rem 0 rgba(0, 0, 0, 0.2);
+	border-radius: 0.6rem;
+	padding: 2.0rem;
+	margin: 4.8rem auto;
+	overflow: auto;
+}
 
-	.callout.alert {
-		@apply text-theme-red-200 bg-theme-red-100 border-theme-red-200;
-	}
+.pre code {
+	background: none !important;
+	box-shadow: none !important;
+	padding: 0;
+	margin: 0;
+	overflow: visible;
+}
 
-	.callout.warning {
-		@apply text-theme-yellow-200 bg-theme-yellow-100 border-theme-yellow-200;
-	}
+.callout {
+	box-shadow: 0 0.2rem 0.6rem 0 rgba(0, 0, 0, 0.2);
+	border-radius: 0.6rem;
+	padding: 2.0rem;
+	margin: 4.8rem 0;
+	display: flex;
+	gap: 2.0rem;
+}
 
-	.callout.question {
-		@apply text-theme-cyan-200 bg-theme-cyan-100 border-theme-cyan-200;
-	}
+.callout.info {
+	background-color: #d1f5fc;
+	color: #0d64ac;
+	border: 1px solid #0d65ac33;
+}
 
-	.callout.success {
-		@apply text-theme-green-200 bg-theme-green-100 border-theme-green-200;
-	}
+.callout.alert {
+	background-color: #fbbfbf;
+	color: #ab0e0e;
+	border: 1px solid #ab0e0e33;
+}
 
-	.callout__icon {
-		@apply mr-5;
-	}
+.callout.warning {
+	background-color: #fafabe;
+	color: #807908;
+	border: 1px solid #80790833;
+}
 
-	.callout__content {
+.callout.question {
+	background-color: #befaf7;
+	color: #08807f;
+	border: 1px solid #08807f33;
+}
 
-	}
+.callout.success {
+	background-color: #e4fabe;
+	color: #618008;
+	border: 1px solid #61800833;
+}
 
-	.callout__title {
-		@apply font-bold;
-	}
+.callout__title {
+	font-weight: 600;
+}
 
-	.callout__body {
+.mdx-styling p {
+	margin-bottom: 2.4rem;
+}
 
-	}
+.mdx-styling ol,
+.mdx-styling ul {
+	list-style: decimal;
+	margin: 0 0 2.4rem 2.4rem;
+}
 
-	.section > .container > h2:first-child {
-		@apply mt-0;
-	}
+.mdx-styling ol,
+.mdx-styling ol ol ol ol {
+	list-style: decimal;
+}
 
-	.mdx-styling h1,
-	.mdx-styling h2,
-	.mdx-styling h3,
-	.mdx-styling h4,
-	.mdx-styling h5,
-	.mdx-styling h6 {
-		@apply
-			font-semibold
-			mb-5
-			mt-12;
-	}
+.mdx-styling ol ol,
+.mdx-styling ol ol ol ol ol {
+	list-style: lower-latin;
+}
 
-	.mdx-styling h1 {
-		@apply text-5xl;
-	}
-	.mdx-styling h2 {
-		@apply text-4xl;
-	}
-	.mdx-styling h3 {
-		@apply text-3xl;
-	}
-	.mdx-styling h4 {
-		@apply text-2xl;
-	}
-	.mdx-styling h5 {
-		@apply text-xl;
-	}
-	.mdx-styling h6 {
-		@apply text-lg;
-	}
-	.mdx-styling p {
-		@apply mb-5;
-	}
-	.mdx-styling ol {
-		@apply
-			list-decimal
-			ml-5
-			mb-5;
-	}
-	.mdx-styling ul {
-		@apply
-			list-disc
-			ml-5
-			mb-5;
-	}
-	.mdx-styling code {
-		@apply font-code text-theme-black bg-theme-white dark:bg-theme-blue-50 shadow-md rounded border-theme-blue-300 p-1 mx-1;
-	}
-	.mdx-styling img,
-	.mdx-styling figure img {
-		@apply shadow-md rounded mx-1 mx-auto;
-	}
-	.mdx-styling img,
-	.mdx-styling figure {
-		@apply mb-5;
-	}
-	.mdx-styling figure figcaption {
-		@apply text-sm text-center;
-	}
-  */
+.mdx-styling ol ol ol,
+.mdx-styling ol ol ol ol ol ol {
+	list-style: lower-roman;
+}
 
+.mdx-styling ul,
+.mdx-styling ul ul ul ul {
+	list-style: disc;
+}
 
+.mdx-styling ul ul,
+.mdx-styling ul ul ul ul ul {
+	list-style: circle;
+}
 
+.mdx-styling ul ul ul,
+.mdx-styling ul ul ul ul ul ul {
+	list-style: square;
+}
 
+.mdx-styling code {
+	background-color: #ffffff;
+	border-radius: 0.6rem;
+	padding: 0.4rem;
+	margin: 0.4rem;
+}
+.mdx-styling img,
+.mdx-styling figure img {
+	box-shadow: 0 0.2rem 0.6rem 0 rgba(0, 0, 0, 0.2);
+	border-radius: 0.6rem;
+	margin: 4.8rem auto 0;
+}
 
+.mdx-styling img {
+	margin: 4.8rem auto;
+}
 
+.mdx-styling figure img {
+	margin-bottom: 1.2rem;
+}
 
+.mdx-styling figure {
+	margin-bottom: 4.8rem;
 
+}
 
-
-
-
-
-
-
-
-
-// module.exports = {
-// 	content: ['./src/**/*.{js,ts,jsx,tsx}'],
-// 	theme: {
-// 		container: {
-// 			padding: '0.625rem',
-// 			center: true,
-// 		},
-// 		extend: {
-// 			colors: {
-// 				theme: {
-// 					blue: {
-// 						50: '#dfeaf6',
-// 						100: '#D1F5FC',
-// 						150: '#94cfff',
-// 						175: '#70b8f3',
-// 						200: '#4CA2E9',
-// 						250: '#2C83CA',
-// 						300: '#0D64AC',
-// 						350: '#0D47A1',
-// 						400: '#094679',
-// 					},
-// 					red: {
-// 						100: '#fbbfbf',
-// 						200: '#ab0e0e',
-// 					},
-// 					yellow: {
-// 						100: '#fafabe',
-// 						200: '#807908',
-// 					},
-// 					green: {
-// 						100: '#e4fabe',
-// 						200: '#618008',
-// 					},
-// 					cyan: {
-// 						100: '#befaf7',
-// 						200: '#08807f',
-// 					},
-// 					white: '#F9FCFF',
-// 					black: '#002442',
-// 					section: {
-// 						light: '#EBF6FF',
-// 						dark: '#002d52',
-// 					},
-// 				},
-// 			},
-// 			fontFamily: {
-// 				sans: ['Work sans', ...defaultTheme.fontFamily.sans],
-// 				serif: ['Crete Round', ...defaultTheme.fontFamily.serif],
-// 				quotes: ['PT Sans', ...defaultTheme.fontFamily.serif],
-// 				code: ['JetBrains Mono', ...defaultTheme.fontFamily.sans],
-// 			},
-// 			keyframes: {
-// 				fadein: {
-// 					'0%': { opacity: 0 },
-// 					'100%': { opacity: 100 },
-// 				},
-// 			},
-// 			animation: {
-// 				fadein: 'fadein 125ms ease-in-out',
-// 			},
-// 		},
-// 	},
-// 	plugins: [],
-// };
+.mdx-styling figure figcaption {
+	text-align: center;
+	font-size: 1.5rem;
+}
