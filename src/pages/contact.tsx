@@ -14,6 +14,7 @@ import {
 	faCircleCheck,
 	faCircleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
+import clsx from 'clsx';
 
 export default function ContactPage() {
 	const {
@@ -169,7 +170,9 @@ export default function ContactPage() {
 												id="name"
 												placeholder="John Doe"
 												autoComplete="false"
-												className="border rounded shadow-sm px-3 py-2"
+												className={clsx({
+													[style.error]: errors.name,
+												})}
 												aria-invalid={errors.name ? 'true' : 'false'}
 												{...register('name', { required: true })}
 											/>
@@ -193,7 +196,9 @@ export default function ContactPage() {
 												id="email"
 												placeholder="name@email.com"
 												autoComplete="false"
-												className="border rounded shadow-sm px-3 py-2"
+												className={clsx({
+													[style.error]: errors.email,
+												})}
 												aria-invalid={errors.email ? 'true' : 'false'}
 												{...register('email', {
 													required: true,
@@ -213,7 +218,9 @@ export default function ContactPage() {
 											<textarea
 												id="message"
 												placeholder="Type your message here..."
-												className="border rounded shadow-sm px-3 py-2"
+												className={clsx({
+													[style.error]: errors.message,
+												})}
 												rows={5}
 												aria-invalid={errors.message ? 'true' : 'false'}
 												{...register('message', { required: true })}
