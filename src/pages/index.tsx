@@ -20,14 +20,18 @@ export const getStaticProps: GetStaticProps = async () => {
 	const blogFilenames: string[] = fs.readdirSync(BLOG_DATA_PATH);
 
 	const projectFrontmatter = await Promise.all(
-		projectFilenames.map((filename) =>
-			getPropsFromFile<PortfolioFrontmatter>(PORTFOLIO_DATA_PATH, filename)
-		)
+		projectFilenames
+			.filter((filename) => filename.endsWith('.mdx'))
+			.map((filename) =>
+				getPropsFromFile<PortfolioFrontmatter>(PORTFOLIO_DATA_PATH, filename)
+			)
 	);
 	const blogFrontmatter = await Promise.all(
-		blogFilenames.map((filename) =>
-			getPropsFromFile<BlogFrontmatter>(BLOG_DATA_PATH, filename)
-		)
+		blogFilenames
+			.filter((filename) => filename.endsWith('.mdx'))
+			.map((filename) =>
+				getPropsFromFile<BlogFrontmatter>(BLOG_DATA_PATH, filename)
+			)
 	);
 
 	projectFrontmatter.sort((a, b) => b.id - a.id);

@@ -14,9 +14,11 @@ export const getStaticProps: GetStaticProps = async () => {
 	const filenames: string[] = fs.readdirSync(PORTFOLIO_DATA_PATH);
 
 	const fileFrontmatter = await Promise.all(
-		filenames.map((filename) =>
-			getPropsFromFile<PortfolioFrontmatter>(PORTFOLIO_DATA_PATH, filename)
-		)
+		filenames
+			.filter((filename) => filename.endsWith('.mdx'))
+			.map((filename) =>
+				getPropsFromFile<PortfolioFrontmatter>(PORTFOLIO_DATA_PATH, filename)
+			)
 	);
 
 	fileFrontmatter.sort((a, b) => b.id - a.id);

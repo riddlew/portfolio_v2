@@ -35,7 +35,9 @@ type BlogProps = {
 };
 
 export const getStaticPaths = async () => {
-	const filenames: string[] = fs.readdirSync(BLOG_DATA_PATH);
+	const filenames: string[] = fs
+		.readdirSync(BLOG_DATA_PATH)
+		.filter((filename) => filename.endsWith('.mdx'));
 	const slugs: SlugParams[] = filenames.map((filename) => {
 		const noExtFilename = filename.replace(/\.mdx$/, '');
 		return {
@@ -99,7 +101,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 	// If there is no slug, or it's a number, show listing of blog posts.
 	if (!slug || pageRegex.test(slug)) {
-		const filenames: string[] = fs.readdirSync(BLOG_DATA_PATH);
+		const filenames: string[] = fs
+			.readdirSync(BLOG_DATA_PATH)
+			.filter((filename) => filename.endsWith('.mdx'));
 		const numPages = Math.ceil(filenames.length / 8);
 		const curPage = slug ? parseInt(slug, 10) : 1;
 
