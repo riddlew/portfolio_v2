@@ -1,0 +1,42 @@
+@use 'config.scss' as *;
+
+.skillbar {
+	position: relative;
+}
+
+.list {
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	grid-template-columns: 1fr;
+	gap: 4rem;
+
+	li {
+		cursor: pointer;
+	}
+
+	@include bp('xs') {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include bp('md') {
+		gap: 2rem;
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@include bp('lg') {
+		grid-template-columns: repeat(4, 1fr);
+		justify-content: flex-start;
+	}
+}
+
+.skill {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+	flex-direction: column;
+
+	@include bp('md') {
+		flex-direction: row;
+	}
+}

@@ -1,0 +1,76 @@
+@use 'config.scss' as *;
+
+.edu_exp_grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2.4rem;
+	margin-bottom: 2.4rem;
+	text-align: center;
+
+	@include bp(md) {
+		text-align: left;
+	}
+
+	@include bp(lg) {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.edu_exp_card {
+	margin-bottom: 2.4rem;
+}
+
+.college {
+	@include bp(md) {
+		margin-top: -1.2rem;
+	}
+}
+
+.certification {
+	margin-bottom: 2.4rem;
+	font-weight: 600;
+}
+
+.details {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 3.6rem;
+	text-align: center;
+
+	@include bp(md) {
+		text-align: left;
+	}
+}
+
+.title {
+	font-weight: 600;
+}
+
+.at {
+	color: #616161;
+	margin: 0 0.8rem;
+}
+
+.date {
+	color: #3990cb;
+	margin-top: 1.2rem;
+	margin-bottom: 1.2rem;
+
+	@include bp(md) {
+		margin-top: 0;
+	}
+}
+
+.bullet_list {
+	padding-left: 2.4rem;
+	list-style: disc;
+	margin-top: 1.2rem;
+
+	li {
+		margin-bottom: 1.2rem;
+	}
+
+	li:last-child {
+		margin-bottom: 0rem;
+	}
+}

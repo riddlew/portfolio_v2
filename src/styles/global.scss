@@ -70,6 +70,14 @@ h6 {
 	font-size: 1.8rem;
 }
 
+p {
+	text-align: center;
+
+	@include bp(md) {
+		text-align: left;
+	}
+}
+
 main a {
 	text-decoration: underline;
 	color: color(dark-blue);
@@ -77,6 +85,10 @@ main a {
 	&:hover {
 		color: color(mid-blue);
 	}
+}
+
+main p.paragraph {
+	margin-bottom: 2.8rem;
 }
 
 .container {
@@ -113,8 +125,16 @@ main a {
 } */
 
 .section {
-	padding-top: 4.8rem;
-	padding-bottom: 4.8rem;
+	padding-top: 6.4rem;
+	padding-bottom: 6.4rem;
+}
+
+.section--alt {
+	background-color: #e2f3ff;
+}
+
+.section__title {
+	margin-bottom: 6.4rem;
 }
 
 .btn {
@@ -168,17 +188,6 @@ main a {
 
 
 /*
-	.tooltip-dark {
-		background-color: theme(colors.theme.black) !important;
-		color: theme(colors.theme.white) !important;
-		--rt-opacity: 1;
-	}
-
-	.tooltip-light {
-		background-color: theme(colors.theme.white) !important;
-		color: theme(colors.theme.black) !important;
-		--rt-opacity: 1;
-	}
 
 	.blockquote {
 		@apply text-theme-blue-300 bg-theme-white dark:bg-theme-blue-50 shadow-md rounded py-5 px-5 text-left mb-5 mx-auto w-fit relative overflow-hidden;
