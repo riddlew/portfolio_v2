@@ -1,0 +1,38 @@
+@use 'config.scss' as *;
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.4rem;
+}
+
+.page_text {
+	margin: 0 1.6rem;
+}
+
+.btn,
+.btn_disabled {
+	color: #ffffff;
+	padding: 1rem 1.6rem;
+	border-radius: 0.6rem;
+	display: block;
+	text-decoration: none;
+
+	@include bp(sm) {
+		display: inline-block;
+	}
+}
+
+.btn {
+	background-color: color(dark-blue);
+
+	&:hover {
+		background-color: color(mid-blue);
+		color: #ffffff;
+	}
+}
+
+.btn_disabled {
+	visibility: hidden;
+}
