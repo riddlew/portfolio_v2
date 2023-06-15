@@ -26,14 +26,16 @@ type SlugParams = {
 
 export const getStaticPaths = async () => {
 	const filenames: string[] = fs.readdirSync(PORTFOLIO_DATA_PATH);
-	const slugs: SlugParams[] = filenames.map((filename) => {
-		const noExtFilename = filename.replace(/\.mdx$/, '');
-		return {
-			params: {
-				slug: slugify(noExtFilename),
-			},
-		};
-	});
+	const slugs: SlugParams[] = filenames
+		.filter((filename) => filename.endsWith('.mdx'))
+		.map((filename) => {
+			const noExtFilename = filename.replace(/\.mdx$/, '');
+			return {
+				params: {
+					slug: slugify(noExtFilename),
+				},
+			};
+		});
 
 	return {
 		paths: slugs,
