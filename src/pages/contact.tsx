@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import Nav from '@/components/Header';
 import Footer from '@/components/Footer';
 import style from '@/styles/pages/contact.module.scss';
@@ -16,6 +16,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import clsx from 'clsx';
 
+type FormValues = {
+	access_key: string;
+	botcheck: boolean;
+	subject: string;
+	name: string;
+	email: string;
+	message: string;
+};
+
 export default function ContactPage() {
 	const {
 		register,
@@ -23,11 +32,11 @@ export default function ContactPage() {
 		setValue,
 		reset,
 		formState: { errors, isSubmitSuccessful, isSubmitting },
-	} = useForm({ mode: 'onTouched' });
+	} = useForm<FormValues>({ mode: 'onTouched' });
 	const [isSuccess, setIsSuccess] = useState(false);
 	const [message, setMessage] = useState('');
 
-	const onSubmit = async (data, e) => {
+	const onSubmit: SubmitHandler<FormValues> = async (data, e) => {
 		console.log(data);
 
 		setValue('subject', 'New message from riddl.dev');
@@ -45,13 +54,16 @@ export default function ContactPage() {
 			if (json.success) {
 				setIsSuccess(true);
 				setMessage(json.message);
-				e.target.reset();
+				e?.target.reset();
 				reset();
 			}
 		} catch (err) {
 			setIsSuccess(false);
-			setMessage(err.toString());
-			console.error(err);
+
+			if (err instanceof Error) {
+				setMessage(err.toString());
+				console.error(err);
+			}
 		}
 	};
 
