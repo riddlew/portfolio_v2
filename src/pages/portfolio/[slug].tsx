@@ -66,7 +66,9 @@ export const PortfolioDetailsPage: NextPage<PortfolioDetailsProps> = ({
 }) => (
 	<>
 		<Head>
-			<title>{source.frontmatter.name}</title>
+			<title>
+				{source.frontmatter.name} - Wyatt Riddle - Full-Stack Software Engineer
+			</title>
 			<meta name="description" content={source.frontmatter.description} />
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			<link rel="icon" href="/favicon.ico" />

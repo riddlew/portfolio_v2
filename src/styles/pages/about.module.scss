@@ -1,5 +1,21 @@
 @use 'config.scss' as *;
 
+.who_am_i {
+	display: flex;
+	align-items: flex-start;
+	gap: 4.8rem;
+}
+
+.picture {
+	img {
+		max-width: fit-content;
+		border-radius: 0.6rem;
+	}
+}
+
+.who_am_i_body {
+}
+
 .edu_exp_grid {
 	display: grid;
 	grid-template-columns: 1fr;

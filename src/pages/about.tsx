@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Nav from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -9,10 +10,10 @@ export default function AboutPage() {
 	return (
 		<>
 			<Head>
-				<title>About Me - Wyatt Riddle - Full-Stack Web Developer</title>
+				<title>About - Wyatt Riddle - Full-Stack Software Engineer</title>
 				<meta
 					name="description"
-					content="Wyatt Riddle is a full-stack web developer with experience in React, Typescript, Express.js, and Ruby on Rails."
+					content="Learn more about my qualifications, experience, and why I became a Software Engineer."
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
@@ -25,34 +26,48 @@ export default function AboutPage() {
 						<h1 className="section__title">Learn More About Me</h1>
 
 						<h2>Who Am I?</h2>
-						<p className="paragraph">
-							My name is Wyatt Riddle. I&apos;m a Software Engineer with
-							experience in React, Next, Express.js, and Ruby on Rails. I enjoy
-							creating responsive and accessible websites, and dabbling in
-							design using tools such as Figma or Adobe Photoshop.
-						</p>
-						<p className="paragraph">
-							I&apos;ve enjoyed programming and making websites as a fun hobby
-							since I was 12 years old. In 2020 I seized the opportunity to
-							complete my Bachelor&apos;s degree in Software Development and
-							turn my beloved hobby into a career. While finishing my degree, I
-							also joined the team at TDS Telecom where I developed full-stack
-							applications using React, TypeScript, and Python.
-						</p>
-						<p className="paragraph">
-							Since then, I&apos;ve volunteered my time at 100devs to help
-							mentor junior engineers and people new to programming while
-							looking for my next opportunity. If you are looking for a
-							passionate Software Engineer to join your team, please feel free
-							to{' '}
-							<Link
-								href="contact"
-								title="Contact Wyatt Riddle"
-								className="text-blue-600 hover:underline"
-							>
-								contact me.
-							</Link>
-						</p>
+						<div className={style.who_am_i}>
+							<div className={style.picture}>
+								<Image
+									src="/avatar.png"
+									alt="Picture of Wyatt Riddle"
+									width="250"
+									height="250"
+								/>
+							</div>
+							<div className={style.who_am_i_body}>
+								<p className="paragraph">
+									My name is Wyatt Riddle. I&apos;m a Software Engineer with
+									experience in React, Next, Express.js, and Ruby on Rails. I
+									enjoy creating responsive and accessible websites, and
+									dabbling in design using tools such as Figma or Adobe
+									Photoshop.
+								</p>
+								<p className="paragraph">
+									I&apos;ve enjoyed programming and making websites as a fun
+									hobby since I was 12 years old. In 2020 I had the opportunity
+									to complete my Bachelor&apos;s degree in Software Development
+									and turn my beloved hobby into a career. While finishing my
+									degree, I also joined the team at TDS Telecom where I
+									developed full-stack applications using React, TypeScript, and
+									Python.
+								</p>
+								<p className="paragraph">
+									Since the beginning of 2023, I&apos;ve volunteered my time at
+									100devs to help mentor junior engineers and people new to
+									programming while looking for my next opportunity. If you are
+									looking for a passionate Software Engineer to join your team,
+									please feel free to{' '}
+									<Link
+										href="contact"
+										title="Contact Wyatt Riddle"
+										className="text-blue-600 hover:underline"
+									>
+										contact me.
+									</Link>
+								</p>
+							</div>
+						</div>
 					</div>
 				</section>
 
@@ -127,17 +142,17 @@ export default function AboutPage() {
 							<ul className={style.bullet_list}>
 								<li>
 									Automated the collection of critical operations information
-									with React and Python; Achieved 100% automation for tasks that
-									previously took an average of 47.5 person-hours per run.
+									with React and Python and achieved 100% automation for tasks
+									that previously took an average of 47.5 person-hours per run.
 								</li>
 								<li>
 									Implemented error checking features in a spreadsheet
-									processing app, resulting in a reduction in failed jobs by
+									processing app that resulted in a reduction in failed jobs by
 									95%.
 								</li>
 								<li>
-									Rebuilt legacy VBS script in Python, decreasing runtime from 2
-									hours to 10 minutes.
+									Rebuilt legacy VBS script in Python and decreased runtime from
+									2 hours to 10 minutes.
 								</li>
 							</ul>
 						</div>

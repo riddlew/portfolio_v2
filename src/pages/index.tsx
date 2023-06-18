@@ -58,12 +58,12 @@ export const HomePage: NextPage<Props> = ({ projects, posts }) => (
 	<>
 		<Head>
 			<title>
-				Wyatt Riddle - Full-Stack Web Developer - React, Typescript, Express.js,
-				Ruby on Rails
+				Wyatt Riddle - Full-Stack Software Engineer - React, Typescript,
+				Express.js, Ruby on Rails
 			</title>
 			<meta
 				name="description"
-				content="Wyatt Riddle is a full-stack web developer with experience in React, Typescript, Express.js, and Ruby on Rails."
+				content="Full-stack Software Engineer with experience in React, Typescript, Express.js, and Ruby on Rails. View recent posts, portfolio projects, or contact me if you'd like to work together."
 			/>
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			<link rel="icon" href="/favicon.ico" />
