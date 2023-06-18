@@ -10,6 +10,7 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import useNavLine from '@/hooks/useNavLine';
+import useDelayedMount from '@/hooks/useDelayedMount';
 import style from './Header.module.scss';
 
 export const Header = () => {
@@ -23,6 +24,7 @@ export const Header = () => {
 		setLineToSelected,
 		setLineToHovered,
 	} = useNavLine();
+	const shouldAnimate = useDelayedMount();
 
 	return (
 		<>
@@ -33,7 +35,7 @@ export const Header = () => {
 
 				<nav className={style.nav} onMouseLeave={() => setLineToSelected()}>
 					<div
-						className="nav_line"
+						className={clsx('nav_line', { animate: shouldAnimate })}
 						ref={lineRef}
 						style={{
 							left: `${lineState.left}px`,
