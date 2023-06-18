@@ -25,7 +25,7 @@ export const CategorySelector = ({ onCategorySelect, selected }: Props) => {
 
 	return (
 		<>
-			<div className={style.container}>
+			<div className={style.container} onMouseLeave={() => setLineToSelected()}>
 				<div
 					className="nav_line"
 					ref={lineRef}
@@ -42,7 +42,6 @@ export const CategorySelector = ({ onCategorySelect, selected }: Props) => {
 								if (ref && category === selected) selectedRef.current = ref;
 							}}
 							onMouseEnter={setLineToHovered}
-							onMouseLeave={() => setLineToSelected()}
 						>
 							<button
 								type="button"

@@ -31,7 +31,7 @@ export const Header = () => {
 					riddl.dev
 				</Link>
 
-				<nav className={style.nav}>
+				<nav className={style.nav} onMouseLeave={() => setLineToSelected()}>
 					<div
 						className="nav_line"
 						ref={lineRef}
@@ -46,7 +46,6 @@ export const Header = () => {
 								if (ref && router.asPath === '/') selectedRef.current = ref;
 							}}
 							onMouseEnter={setLineToHovered}
-							onMouseLeave={() => setLineToSelected()}
 						>
 							<Link href="/">Home</Link>
 						</li>
@@ -56,7 +55,6 @@ export const Header = () => {
 									selectedRef.current = ref;
 							}}
 							onMouseEnter={setLineToHovered}
-							onMouseLeave={() => setLineToSelected()}
 						>
 							<Link href="/about">About</Link>
 						</li>
@@ -66,7 +64,6 @@ export const Header = () => {
 									selectedRef.current = ref;
 							}}
 							onMouseEnter={setLineToHovered}
-							onMouseLeave={() => setLineToSelected()}
 						>
 							<Link href="/portfolio">Portfolio</Link>
 						</li>
@@ -75,7 +72,6 @@ export const Header = () => {
 								if (ref && router.asPath === '/blog') selectedRef.current = ref;
 							}}
 							onMouseEnter={setLineToHovered}
-							onMouseLeave={() => setLineToSelected()}
 						>
 							<Link href="/blog">Blog</Link>
 						</li>
@@ -85,7 +81,6 @@ export const Header = () => {
 									selectedRef.current = ref;
 							}}
 							onMouseEnter={setLineToHovered}
-							onMouseLeave={() => setLineToSelected()}
 						>
 							<Link href="/contact">Contact</Link>
 						</li>

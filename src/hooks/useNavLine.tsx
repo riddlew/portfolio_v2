@@ -16,7 +16,7 @@ const useNavLine = () => {
 
 	const setLineToHovered = (event: React.MouseEvent<HTMLLIElement>) => {
 		if (lineRef.current) {
-			const target = event.target as HTMLLIElement;
+			const target = event.currentTarget as HTMLLIElement;
 			const { width } = target.getBoundingClientRect();
 			const left = target.offsetLeft;
 			setLineState({ left, width });
