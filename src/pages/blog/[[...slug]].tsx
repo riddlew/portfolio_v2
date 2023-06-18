@@ -159,7 +159,10 @@ export const BlogPage: NextPage<BlogProps> = ({
 		return (
 			<>
 				<Head>
-					<title>{`Blog - Page ${curPage}`}</title>
+					<title>
+						{`Blog - Page ${curPage}`} - Wyatt Riddle - Full-Stack Software
+						Engineer
+					</title>
 					<meta
 						name="description"
 						content={`Page ${curPage} of blog posts relating to Software Engineering and Web Development`}
@@ -188,7 +191,10 @@ export const BlogPage: NextPage<BlogProps> = ({
 	return (
 		<>
 			<Head>
-				<title>{(source as MDXRemoteBlogPostTypes).frontmatter.title}</title>
+				<title>
+					{(source as MDXRemoteBlogPostTypes).frontmatter.title} - Wyatt Riddle
+					- Full-Stack Software Engineer
+				</title>
 				<meta
 					name="description"
 					content={(source as MDXRemoteBlogPostTypes).frontmatter.description}

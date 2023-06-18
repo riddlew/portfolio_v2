@@ -44,10 +44,10 @@ export const PortfolioPage: NextPage<PortfolioProps> = ({ source }) => {
 	return (
 		<>
 			<Head>
-				<title>Portfolio - Wyatt Riddle - Full-Stack Web Developer</title>
+				<title>Portfolio - Wyatt Riddle - Full-Stack Software Engineer</title>
 				<meta
 					name="description"
-					content="Wyatt Riddle is a full-stack web developer with experience in React, Typescript, Express.js, and Ruby on Rails."
+					content="View my portfolio and see recent projects that use React, Typescript, Express.js, and/or Ruby on Rails."
 				/>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
