@@ -1,6 +1,7 @@
 import { portfolioCategories } from '@/config';
 import clsx from 'clsx';
 import useNavLine from '@/hooks/useNavLine';
+import useDelayedMount from '@/hooks/useDelayedMount';
 import style from './CategorySelector.module.scss';
 
 type Props = {
@@ -16,6 +17,7 @@ export const CategorySelector = ({ onCategorySelect, selected }: Props) => {
 		setLineToSelected,
 		setLineToHovered,
 	} = useNavLine();
+	const shouldAnimate = useDelayedMount();
 
 	const onCategoryMobileSelect = (
 		event: React.ChangeEvent<HTMLSelectElement>
@@ -27,7 +29,7 @@ export const CategorySelector = ({ onCategorySelect, selected }: Props) => {
 		<>
 			<div className={style.container} onMouseLeave={() => setLineToSelected()}>
 				<div
-					className="nav_line"
+					className={clsx('nav_line', { animate: shouldAnimate })}
 					ref={lineRef}
 					style={{
 						left: `${lineState.left}px`,

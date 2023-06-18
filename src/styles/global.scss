@@ -169,9 +169,13 @@ main p.paragraph {
 	left: 0;
 	position: absolute;
 	width: 8rem;
-	transition-property: left, width;
-	transition-duration: 250ms;
-	transition-timing-function:  cubic-bezier(0.4, 0, 0.2, 1);
+
+	// Only animate after page has been loaded.
+	&.animate {
+		transition-property: left, width;
+		transition-duration: 250ms;
+		transition-timing-function:  cubic-bezier(0.4, 0, 0.2, 1);
+	}
 }
 
 .swiper {
